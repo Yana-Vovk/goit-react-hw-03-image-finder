@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Styles.Module.css';
+import s from './ImageGalleryItem.Module.css';
 
 const ImageGalleryItem = ({ webformatURL, onToggleModal, largeImageURL }) => {
   return (

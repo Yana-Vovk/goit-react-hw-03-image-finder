@@ -1,11 +1,11 @@
 import React from 'react';
-import s from './Styles.Module.css';
+import s from './Button.Module.css';
 
 const Button = ({ onClick, isLoading }) => (
   <button type="button"
     className={s.Button}
     onClick={onClick}>
-    {isLoading ? '' : 'Load more'}
+    Load more
   </button>
 );
 

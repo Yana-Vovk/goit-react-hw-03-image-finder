@@ -1,9 +1,10 @@
-import ImageGalleryItem from './ImageGalleryItem';
-import FetchImageByAPI from './FetchImageByAPI';
-import s from './Styles.Module.css';
+import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
+import FetchImageByAPI from '../../services/FetchImageByAPI';
+import s from './ImageGallery.Module.css';
 import React, { Component } from 'react';
-import Modal from './Modal';
-import Button from './Button';
+import Modal from '../Modal/Modal';
+import Button from '../Button';
+import LoaderSpinner from '../Loader/Loader';
 
 class ImageGallery extends Component {
   state = {
@@ -44,6 +45,7 @@ class ImageGallery extends Component {
       .then(images => {
         this.setState(prevState => ({
           images: [...prevState.images, ...images],
+           currentPage: prevState.currentPage + 1,
         }));
       })
       .catch(error => this.setState({ error }))
@@ -60,8 +62,6 @@ class ImageGallery extends Component {
     this.toggleModal();
     this.setState({ largeImageURL: url });
   }
-
-  shouldRenderLoadMoreButton
   
   render() {
     const { images, isLoading, error, showModal, largeImageURL } = this.state;
@@ -80,8 +80,12 @@ class ImageGallery extends Component {
           ))}
         </ul>
 
+        {isLoading && (
+           <LoaderSpinner/>
+        )}
+
         {shouldRenderLoadMoreButton && (
-          <Button onClick={this.fetchImg} isLoading={isLoading} />
+          <Button onClick={this.fetchImg}/>          
         )}
 
         {showModal && (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Searchbar from './components/Searchbar';
-import ImageGallery from './components/ImageGallery';
+import Searchbar from './components/Searchbar/Searchbar';
+import ImageGallery from './components/ImageGallery/ImageGallery';
 
 
 class App extends Component {
