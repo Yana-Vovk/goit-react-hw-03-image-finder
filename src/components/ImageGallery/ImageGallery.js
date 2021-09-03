@@ -65,7 +65,7 @@ class ImageGallery extends Component {
   
   render() {
     const { images, isLoading, error, showModal, largeImageURL } = this.state;
-    const shouldRenderLoadMoreButton = images.length > 0;
+    const shouldRenderLoadMoreButton = images.length > 0 && !isLoading;
 
     return (
       <div>
